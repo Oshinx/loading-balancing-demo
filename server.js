@@ -15,7 +15,7 @@ const redisClient = redis.createClient({
     host:'localhost'
 })
 //used to handle reverse proxy
-//app.set('trust proxy', 1)
+app.set('trust proxy', 1)
 
 app.use(session({
     name:'sample',
@@ -42,7 +42,7 @@ app.get('/submit', (req, res) => {
 
     req.session.clientId = id;
     let newSession =   req.session;
-    res.send(`server 2  ${newSession}`)
+    res.send(`server 2  ${newSession.clientId}`)
 })
 
 
